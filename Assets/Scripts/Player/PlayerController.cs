@@ -10,14 +10,13 @@ public class PlayerController : MonoBehaviour
     private bool canDoubleJump;
     private Vector3 velocity;
     private Vector3 moveDirection;
-
     public CharacterController charController;
     private Camera playerCamera;
+
     private void Start()
     {
         playerCamera = Camera.main;
     }
-
     void Update()
     {
         HandleMove();
@@ -34,9 +33,7 @@ public class PlayerController : MonoBehaviour
         charController.Move(moveDirection * Time.deltaTime * moveSpeed);
 
         transform.rotation = Quaternion.Euler(0f, playerCamera.transform.rotation.eulerAngles.y, 0f);
-        Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
     }
-
     private void HandleJump()
     {
         if (charController.isGrounded)
@@ -52,8 +49,11 @@ public class PlayerController : MonoBehaviour
             moveDirection.y = Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y);
             canDoubleJump = false;
         }
-
         moveDirection.y += Physics.gravity.y * Time.deltaTime;
         charController.Move(velocity * Time.deltaTime);
+    }
+    public void Bounce(float force)
+    {
+        moveDirection.y = Mathf.Sqrt(force * -2f * Physics.gravity.y);
     }
 }
