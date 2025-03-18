@@ -22,4 +22,19 @@ public class MovingPlatform : MonoBehaviour
                 nextPos = 0;
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.transform.SetParent(transform); // Hacer que el jugador sea hijo de la plataforma
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.transform.SetParent(null); // Liberar al jugador cuando salga de la plataforma
+        }
+    }
 }

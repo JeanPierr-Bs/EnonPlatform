@@ -44,9 +44,11 @@ public class LoosePlatform : MonoBehaviour
         StopAllCoroutines();
         gameObject.SetActive(true);
         transform.position = startPosition; // Restaura la posición inicial
-        rb.useGravity = false;
-        rb.velocity = Vector3.zero; // Detiene cualquier movimiento
-        col.enabled = true;
+
         rb.isKinematic = true;
+        rb.useGravity = false;
+        rb.Sleep();// Detiene cualquier movimiento
+        col.enabled = true;
+        
     }
 }

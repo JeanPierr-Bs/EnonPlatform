@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool isClimbing = false;
     private Vector3 velocity;
     private Vector3 moveDirection;
+    private Animator anim;
     public CharacterController charController;
     private Camera playerCamera;
     void Awake()
@@ -24,15 +25,23 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         playerCamera = Camera.main;
     }
     void Update()
     {
         HandleMove();
         HandleJump();
+        if (charController.isGrounded)
+        {
+            anim.SetBool("isJumping", false);
+        }
     }
     private void HandleMove()
     {
+        bool isMoving = Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
+        anim.SetBool("isMoving", isMoving); // Activa la animación de caminar
+
         if (isClimbing)
         {
             moveDirection.y = Input.GetAxisRaw("Vertical") * climbSpeed; // Movimiento vertical en la escalera
@@ -61,6 +70,7 @@ public class PlayerController : MonoBehaviour
             {
                 isClimbing = false; // Salimos del estado de escalada
                 moveDirection.y = Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y); // Salto al soltar escalera
+                anim.SetBool("isJumping", true); // Activa la animación de salt
             }
         }
         if (charController.isGrounded)
@@ -78,12 +88,14 @@ public class PlayerController : MonoBehaviour
             {
                 moveDirection.y = Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y);
                 coyoteTimeCounter = 0f; // Evita que se use más de una vez
+                anim.SetBool("isJumping", true); // Activa la animación de salt
             }
         }
         else if (Input.GetButtonDown("Jump") && canDoubleJump)
         {
             moveDirection.y = Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y);
             canDoubleJump = false; // Ahora sí desactivamos el doble salto solo después de usarlo
+            anim.SetBool("isJumping", true); // Activa la animación de salt
         }
         // Aplicar gravedad solo si no está escalando
         if (!isClimbing)
