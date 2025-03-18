@@ -18,6 +18,10 @@ public class PlayerHealth : MonoBehaviour
             currentHealth -= damage;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
             Debug.Log("Vida: " + currentHealth);
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
         }
     }
     public void Heal(int amount)
@@ -28,6 +32,15 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = Mathf.Min(currentHealth + amount,maxHealth);
             UiManager.Instance.UpdateHealth(currentHealth);
             Debug.Log("Vida: " + currentHealth);
+        }
+    }
+    private void Die()
+    {
+        Debug.Log("El jugador ha muerto. Respawneando...");
+        SpawnManager spawnManager = FindObjectOfType<SpawnManager>();
+        if (spawnManager != null)
+        {
+            spawnManager.RespawnPlayer(gameObject);
         }
     }
     public int GetCurrentHealth()

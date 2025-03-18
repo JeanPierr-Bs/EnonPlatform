@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7731706723686397232}
-  m_Mesh: {fileID: -6686669030262739812, guid: 0471da9525db6444c9ed1fa1fed55931, type: 3}
+  m_Mesh: {fileID: -6686669030262739812, guid: 98d8631ec0c6ae64688cc6e16ef6a3ac, type: 3}
 --- !u!23 &9043882571107447079
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6538903991835684241, guid: 0471da9525db6444c9ed1fa1fed55931, type: 3}
+  - {fileID: 2100000, guid: 043d1f2fdc9e8e14b9acb1a914abbfd1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,8 +105,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.39999998, y: 0.099999994, z: 0.39999998}
-  m_Center: {x: 0, y: 0.25, z: 0}
+  m_Size: {x: 0.33397448, y: 0.09999999, z: 0.29571778}
+  m_Center: {x: -0.0021845303, y: 0.25, z: 0.0024414163}
 --- !u!114 &4152294680745677890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1233154770451592886}
@@ -184,7 +184,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8468221167653024086}
-  m_Mesh: {fileID: -7570295060702756835, guid: 0471da9525db6444c9ed1fa1fed55931, type: 3}
+  m_Mesh: {fileID: -2698825510923320242, guid: 98d8631ec0c6ae64688cc6e16ef6a3ac, type: 3}
 --- !u!23 &7964007057043574915
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6538903991835684241, guid: 0471da9525db6444c9ed1fa1fed55931, type: 3}
+  - {fileID: 2100000, guid: 043d1f2fdc9e8e14b9acb1a914abbfd1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -244,7 +244,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.5668118, y: 0.09176153, z: 0.5745091}
-  m_Center: {x: 0.00676171, y: 0.045880765, z: -0.003784617}
+  m_Size: {x: 0.54266316, y: 0.09176153, z: 0.47108}
+  m_Center: {x: 0.004798472, y: 0.045880765, z: 0.008243283}
