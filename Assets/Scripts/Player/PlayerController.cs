@@ -30,7 +30,9 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        if (Time.timeScale == 0) return; // Si el juego está pausado, no se mueve
         HandleMove();
+
         HandleJump();
         if (charController.isGrounded)
         {
