@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    private bool isActive = false;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !isActive)
+        if (other.CompareTag("Player"))
         {
-            SpawnManager spawnManager = FindObjectOfType<SpawnManager>();
-            if (spawnManager != null)
-            {
-                spawnManager.SetSpawnPoint(transform.position);
-            }
-
-            isActive = true;
-            Debug.Log("Nuevo SpawnPoint activado en: " + transform.position);
+            SpawnManager.lastCheckPointPosition = transform.position;
+            Debug.Log("La posicion del checkpoint se guardo");
         }
     }
 }

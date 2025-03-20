@@ -19,6 +19,8 @@ public class ScoreManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    // Añade puntos y actualiza la UI
     public void AddPoints(int points)
     {
         if (points > 0)
@@ -28,6 +30,8 @@ public class ScoreManager : MonoBehaviour
             Debug.Log("Puntos: " + score);
         }
     }
+
+    // Obtiene la puntuación actual
     public int GetScore()
     {
         return score;

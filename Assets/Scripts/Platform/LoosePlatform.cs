@@ -23,7 +23,7 @@ public class LoosePlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("El jugador activó la plataforma: " + gameObject.name);
+            //Debug.Log("El jugador activó la plataforma: " + gameObject.name);
             StartCoroutine(Drop());
         }
     }
@@ -40,7 +40,7 @@ public class LoosePlatform : MonoBehaviour
     // Método para resetear la plataforma (llamarlo desde SpawnManager cuando el player muera)
     public void ResetPlatform()
     {
-        Debug.Log("Reseteando plataforma: " + gameObject.name);
+        //Debug.Log("Reseteando plataforma: " + gameObject.name);
         StopAllCoroutines();
         gameObject.SetActive(true);
         transform.position = startPosition; // Restaura la posición inicial

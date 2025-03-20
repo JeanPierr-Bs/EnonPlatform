@@ -6,22 +6,37 @@ using UnityEngine;
 public class UiManager : MonoBehaviour
 {
     public static UiManager Instance { get; private set; }
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI healthText;
+
+    public TextMeshProUGUI scoreText; // Texto de la puntuación
+    public TextMeshProUGUI healthText; // Texto de las vidas
 
     void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+        }
         else
+        {
             Destroy(gameObject);
+        }
     }
+
+    // Actualiza el texto de la puntuación
     public void UpdateScore(int score)
     {
-        scoreText.text = "Puntos: " + score;
+        if (scoreText != null)
+        {
+            scoreText.text = "Puntos: " + score;
+        }
     }
-    public void UpdateHealth(int health)
+
+    // Actualiza el texto de las vidas
+    public void UpdateHealth(int currentHealth)
     {
-        healthText.text = "Vida: " + health;
+        if (healthText != null)
+        {
+            healthText.text = "Vidas: " + currentHealth;
+        }
     }
 }
