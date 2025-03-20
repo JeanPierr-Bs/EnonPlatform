@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class HealthPickUp : MonoBehaviour
 {
-    //public int healAmount = 2; // Cantidad de vida que restaura
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Player")) // Verifica si el jugador lo toca
-    //    {
-    //        PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+    public int healAmount = 1; // Cantidad de vida que restaura
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player")) // Verifica si el jugador lo toca
+        {
+            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
 
-    //        if (playerHealth != null)
-    //        {
-    //            //playerHealth.Heal(healAmount); // Cura al jugador
-    //            Destroy(gameObject); // Elimina el objeto tras usarlo
-    //        }
-    //    }
-    //}
+            if (playerHealth != null)
+            {
+                playerHealth.Heal(healAmount); // Cura al jugador
+                Destroy(gameObject); // Elimina el objeto tras usarlo
+            }
+        }
+    }
 }

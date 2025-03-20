@@ -6,7 +6,6 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
     private int score = 0;
-
     void Awake()
     {
         if (Instance == null)
@@ -19,7 +18,6 @@ public class ScoreManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     // Añade puntos y actualiza la UI
     public void AddPoints(int points)
     {
@@ -30,10 +28,16 @@ public class ScoreManager : MonoBehaviour
             Debug.Log("Puntos: " + score);
         }
     }
-
     // Obtiene la puntuación actual
     public int GetScore()
     {
         return score;
+    }
+    // Método para reiniciar la puntuación (Llamar al perder todas las vidas o reiniciar nivel)
+    public void ResetScore()
+    {
+        score = 0;
+        UiManager.Instance.UpdateScore(score);
+        Debug.Log("Puntos reiniciados");
     }
 }
