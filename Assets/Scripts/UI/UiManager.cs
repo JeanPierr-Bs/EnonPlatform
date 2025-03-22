@@ -10,6 +10,7 @@ public class UiManager : MonoBehaviour
     public TextMeshProUGUI scoreText; // Texto de la puntuación
     public TextMeshProUGUI healthText; // Texto de las vidas
     public GameObject gameOverPanel;
+    public int soundToPlay;
 
     void Awake()
     {
@@ -51,13 +52,15 @@ public class UiManager : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Time.timeScale = 0; // Pausa el 
+            Time.timeScale = 0; // Pausa el
+            SoundManager.instance.PlaySfx(soundToPlay);
             gameOverPanel.SetActive(true); //Muestra la pantalla de Game Over
         }
     }
     public void Retry()
     {
         Time.timeScale = 1; // Restaura el tiempo antes de reiniciar
+        SoundManager.instance.ResetAudio();
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         ScoreManager.Instance.ResetScore();
     }

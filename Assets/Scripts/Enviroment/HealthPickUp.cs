@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthPickUp : MonoBehaviour
 {
     public int healAmount = 1; // Cantidad de vida que restaura
+    public int soundToPlay;
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) // Verifica si el jugador lo toca
@@ -14,6 +15,7 @@ public class HealthPickUp : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.Heal(healAmount); // Cura al jugador
+                SoundManager.instance.PlaySfx(soundToPlay);
                 Destroy(gameObject); // Elimina el objeto tras usarlo
             }
         }

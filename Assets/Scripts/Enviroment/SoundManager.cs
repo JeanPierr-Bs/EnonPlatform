@@ -5,53 +5,83 @@ using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager Instance { get; private set; }
+    public static SoundManager instance;
+    public AudioSource[] music;
+    public AudioSource[] sfx;
 
-    [Header("Audio Sources")]
-    [SerializeField] private AudioSource musicSource;  // Música de fondo
-    [SerializeField] private AudioSource sfxSource;    // Fuente de efectos de sonido
-
-    [Header("Audio Mixer")]
-    [SerializeField] private AudioMixer audioMixer;    // Referencia al Audio Mixer
+    private int currentMusicIndex = -1; // Para recordar qué música estaba sonando
 
     private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Mantiene el sonido al cambiar de escena
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
+            return;
         }
     }
 
-    // Reproduce una música de fondo
-    public void PlayMusic(AudioClip musicClip)
+    private void Start()
     {
-        if (musicSource.clip != musicClip)
+        if (currentMusicIndex == -1) // Solo inicia si no había música sonando antes
         {
-            musicSource.clip = musicClip;
-            musicSource.Play();
+            PlayMusic(0);
         }
     }
 
-    // Reproduce un efecto de sonido
-    public void PlaySFX(AudioClip sfxClip)
+    public void PlayMusic(int musicToPlay)
     {
-        sfxSource.PlayOneShot(sfxClip);
+        if (musicToPlay < 0 || musicToPlay >= music.Length)
+        {
+            Debug.LogWarning("Índice de música fuera de rango: " + musicToPlay);
+            return;
+        }
+
+        if (currentMusicIndex == musicToPlay && music[musicToPlay].isPlaying)
+            return; // Evita que la misma música se vuelva a reproducir al reiniciar
+
+        StopAllMusic(); // Asegura que no haya duplicados
+        music[musicToPlay].Play();
+        currentMusicIndex = musicToPlay;
     }
 
-    // Cambia el volumen de la música (Usado en el menú de opciones)
-    public void SetMusicVolume(float volume)
+    public void StopAllMusic()
     {
-        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20); // Convierte lineal a dB
+        foreach (var m in music)
+        {
+            if (m.isPlaying)
+                m.Stop();
+        }
+        currentMusicIndex = -1;
     }
 
-    // Cambia el volumen de los efectos de sonido
-    public void SetSFXVolume(float volume)
+    public void PlaySfx(int sfxToPlay)
     {
-        audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
+        if (sfxToPlay < 0 || sfxToPlay >= sfx.Length)
+        {
+            Debug.LogWarning("Índice de SFX fuera de rango: " + sfxToPlay);
+            return;
+        }
+
+        sfx[sfxToPlay].Play();
+    }
+
+    public void ResetAudio()
+    {
+        StopAllSfx();
+        PlayMusic(currentMusicIndex); // Reproduce la música que estaba sonando antes
+    }
+
+    public void StopAllSfx()
+    {
+        foreach (var s in sfx)
+        {
+            if (s.isPlaying)
+                s.Stop();
+        }
     }
 }

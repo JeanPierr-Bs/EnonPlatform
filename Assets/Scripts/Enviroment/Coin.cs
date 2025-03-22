@@ -5,11 +5,13 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     public int points = 10; // Valor de la moneda
+    public int soundToPlay;
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) // Verifica si el jugador la toca
         {
             ScoreManager.Instance.AddPoints(points); // Suma los puntos
+            SoundManager.instance.PlaySfx(soundToPlay);
             Destroy(gameObject); // Destruye la moneda
         }
     }
