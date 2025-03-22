@@ -2,11 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pausePanel; // Panel de pausa
+    public static PauseMenu instance;
+    public GameObject pausePanel, optionPanel; // Panel de pausa
+    public Slider musicSlider, sfxSlider;
     private bool isPaused = false;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) // Detecta ESC
@@ -25,6 +33,15 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None; // Libera el cursor
         Cursor.visible = true;
     }
+    public void OpenOptionPanel()
+    {
+        optionPanel.SetActive(true);
+    }
+
+    public void CloseOptionPanel()
+    {
+        optionPanel.SetActive(false);
+    }
     public void ResumeGame()
     {
         pausePanel.SetActive(false);
@@ -37,5 +54,13 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f; // Asegura que el tiempo vuelva a la normalidad
         SceneManager.LoadScene("MainMenu"); // Vuelve al menú principal
+    }
+    public void SetMusicLevel()
+    {
+        SoundManager.instance.SetMusicLevel();
+    }
+    public void SetSFXLevel()
+    {
+        SoundManager.instance.SetSFXLevel();
     }
 }

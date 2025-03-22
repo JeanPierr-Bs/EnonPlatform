@@ -9,6 +9,8 @@ public class SoundManager : MonoBehaviour
     public AudioSource[] music;
     public AudioSource[] sfx;
 
+    public AudioMixerGroup musicMixer, SfxMixer;
+
     private int currentMusicIndex = -1; // Para recordar qué música estaba sonando
 
     private void Awake()
@@ -83,5 +85,13 @@ public class SoundManager : MonoBehaviour
             if (s.isPlaying)
                 s.Stop();
         }
+    }
+    public void SetMusicLevel()
+    {
+        musicMixer.audioMixer.SetFloat("MusicVolume", PauseMenu.instance.musicSlider.value);
+    }
+    public void SetSFXLevel()
+    {
+        SfxMixer.audioMixer.SetFloat("SfxVolume",PauseMenu.instance.sfxSlider.value);
     }
 }
