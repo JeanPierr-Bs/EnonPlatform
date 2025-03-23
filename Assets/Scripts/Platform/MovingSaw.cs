@@ -33,7 +33,6 @@ public class MovingSaw : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("El jugador fue dañado por la sierra!");
             PlayerHealth.Instance.TakeDamage(); // Ajusta según tu sistema de vida
         }
     }

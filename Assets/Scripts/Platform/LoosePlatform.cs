@@ -23,7 +23,6 @@ public class LoosePlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //Debug.Log("El jugador activó la plataforma: " + gameObject.name);
             StartCoroutine(Drop());
         }
     }

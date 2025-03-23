@@ -9,13 +9,11 @@ public class PlayerHealth : MonoBehaviour
     public static PlayerHealth Instance { get; private set; }
     public int maxLives = 3; // Numero de vidas del jugador
     private int currentLives;
-    // private Collider col; // Referencia al Collider
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -26,7 +24,6 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         currentLives = maxLives; //inicia con todas las vidas
-        Debug.Log("Tus vidas son:" + currentLives);
         UiManager.Instance.UpdateHealth(currentLives);
     }
 
@@ -34,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentLives--; //Resta una vida
         UiManager.Instance.UpdateHealth(currentLives);
-        Debug.Log("Vidas restantes: " + currentLives);
+        ResetPlatforms();
 
         if (currentLives <= 0)
         {
@@ -46,12 +43,18 @@ public class PlayerHealth : MonoBehaviour
         currentLives += amount;
         currentLives = Mathf.Clamp(currentLives, 0, maxLives); // Evita que pase el máximo
         UiManager.Instance.UpdateHealth(currentLives); // Actualiza la UI
-        Debug.Log("Vida recuperada. Vida actual: " + currentLives);
+    }
+    private void ResetPlatforms()
+    {
+        LoosePlatform[] platforms = FindObjectsOfType<LoosePlatform>(); // Encuentra todas las plataformas
+
+        foreach (LoosePlatform platform in platforms)
+        {
+            platform.ResetPlatform(); // Reinicia cada plataforma
+        }
     }
     private void GameOver()
     {
-        Debug.Log("¡Game Over! Reiniciando nivel...");
         UiManager.Instance.ShowGameOver();
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reinicia el nivel
     }
 }

@@ -13,7 +13,6 @@ public class WinTrigger : MonoBehaviour
     }
     void WinGame()
     {
-        Debug.Log("¡Has ganado!");
         winPanel.SetActive(true); // Muestra la pantalla de victoria
         SoundManager.instance.PlaySfx(soundToPlay);
         Time.timeScale = 0; // Pausa el juego

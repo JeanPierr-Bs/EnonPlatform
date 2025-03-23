@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5814427781207688915
+--- !u!1 &5050009022713215679
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6627943977427164265}
-  - component: {fileID: 7806132863722804172}
-  - component: {fileID: 5453862666082952966}
-  - component: {fileID: 247075247210791778}
+  - component: {fileID: 5575153834170703877}
+  - component: {fileID: 8858922736939560864}
+  - component: {fileID: 6707478339188759402}
+  - component: {fileID: 4924131072023848816}
+  - component: {fileID: 7402276364559796837}
   m_Layer: 0
-  m_Name: block-snow-curve-low
+  m_Name: spike-block-wide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6627943977427164265
+--- !u!4 &5575153834170703877
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5814427781207688915}
+  m_GameObject: {fileID: 5050009022713215679}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -12, y: 60, z: 95.3}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12.729511, y: -0.04999618, z: 37.411816}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!33 &7806132863722804172
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8858922736939560864
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5814427781207688915}
-  m_Mesh: {fileID: 5361052050597327684, guid: b66131cf8237d004e93b9edf01835519, type: 3}
---- !u!23 &5453862666082952966
+  m_GameObject: {fileID: 5050009022713215679}
+  m_Mesh: {fileID: 6199785281083731018, guid: c06ec3531cc57c546987587ef705b002, type: 3}
+--- !u!23 &6707478339188759402
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5814427781207688915}
+  m_GameObject: {fileID: 5050009022713215679}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6538903991835684241, guid: b66131cf8237d004e93b9edf01835519, type: 3}
+  - {fileID: -6538903991835684241, guid: c06ec3531cc57c546987587ef705b002, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,13 +85,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &247075247210791778
-SphereCollider:
+--- !u!65 &4924131072023848816
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5814427781207688915}
+  m_GameObject: {fileID: 5050009022713215679}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -99,9 +100,21 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.03
-  m_Center: {x: 0, y: -0.52, z: 0}
+  m_Size: {x: 2.1899714, y: 0.72513986, z: 0.7268877}
+  m_Center: {x: 0.0023396015, y: 0.51321995, z: 0.014478207}
+--- !u!114 &7402276364559796837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5050009022713215679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59baf498e5eba60458abd1612fe3e0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

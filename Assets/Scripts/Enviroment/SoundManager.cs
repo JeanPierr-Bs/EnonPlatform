@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
     public AudioSource[] music;
     public AudioSource[] sfx;
-
     public AudioMixerGroup musicMixer, SfxMixer;
-
     private int currentMusicIndex = -1; // Para recordar qué música estaba sonando
-
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            transform.parent = null; // Asegura que sea un objeto raíz
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded; // Detectar cambio de escena
         }
         else
         {
@@ -26,20 +26,18 @@ public class SoundManager : MonoBehaviour
             return;
         }
     }
-
     private void Start()
     {
-        if (currentMusicIndex == -1) // Solo inicia si no había música sonando antes
-        {
-            PlayMusic(0);
-        }
+        ChangeMusicByScene(SceneManager.GetActiveScene().name); // Verifica qué música debe sonar
     }
-
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ChangeMusicByScene(scene.name); // Cambia la música cuando cambia de escena
+    }
     public void PlayMusic(int musicToPlay)
     {
         if (musicToPlay < 0 || musicToPlay >= music.Length)
         {
-            Debug.LogWarning("Índice de música fuera de rango: " + musicToPlay);
             return;
         }
 
@@ -50,7 +48,6 @@ public class SoundManager : MonoBehaviour
         music[musicToPlay].Play();
         currentMusicIndex = musicToPlay;
     }
-
     public void StopAllMusic()
     {
         foreach (var m in music)
@@ -60,24 +57,15 @@ public class SoundManager : MonoBehaviour
         }
         currentMusicIndex = -1;
     }
-
     public void PlaySfx(int sfxToPlay)
     {
         if (sfxToPlay < 0 || sfxToPlay >= sfx.Length)
         {
-            Debug.LogWarning("Índice de SFX fuera de rango: " + sfxToPlay);
             return;
         }
 
         sfx[sfxToPlay].Play();
     }
-
-    public void ResetAudio()
-    {
-        StopAllSfx();
-        PlayMusic(currentMusicIndex); // Reproduce la música que estaba sonando antes
-    }
-
     public void StopAllSfx()
     {
         foreach (var s in sfx)
@@ -86,12 +74,29 @@ public class SoundManager : MonoBehaviour
                 s.Stop();
         }
     }
-    public void SetMusicLevel()
+    public void ResetAudio()
     {
-        musicMixer.audioMixer.SetFloat("MusicVolume", PauseMenu.instance.musicSlider.value);
+        StopAllSfx();
+        PlayMusic(currentMusicIndex); // Reproduce la música que estaba sonando antes
     }
-    public void SetSFXLevel()
+    public void SetMusicLevel(float volume)
     {
-        SfxMixer.audioMixer.SetFloat("SfxVolume",PauseMenu.instance.sfxSlider.value);
+        musicMixer.audioMixer.SetFloat("MusicVolume", volume);
+    }
+    public void SetSFXLevel(float volume)
+    {
+        SfxMixer.audioMixer.SetFloat("SfxVolume",volume);
+    }
+    // Cambia la música según la escena
+    private void ChangeMusicByScene(string sceneName)
+    {
+        if (sceneName == "MainMenu")
+        {
+            PlayMusic(1); // Música del menú
+        }
+        else if (sceneName == "EnonPlatform")
+        {
+            PlayMusic(0); // Música del nivel
+        }
     }
 }

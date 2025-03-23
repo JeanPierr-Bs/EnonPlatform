@@ -6,12 +6,10 @@ using UnityEngine;
 public class UiManager : MonoBehaviour
 {
     public static UiManager Instance { get; private set; }
-
     public TextMeshProUGUI scoreText; // Texto de la puntuación
     public TextMeshProUGUI healthText; // Texto de las vidas
     public GameObject gameOverPanel;
     public int soundToPlay;
-
     void Awake()
     {
         if (Instance == null)
@@ -28,7 +26,6 @@ public class UiManager : MonoBehaviour
     {
         Time.timeScale = 1; // Asegurar que el juego NO inicie pausado
     }
-
     // Actualiza el texto de la puntuación
     public void UpdateScore(int score)
     {
@@ -37,7 +34,6 @@ public class UiManager : MonoBehaviour
             scoreText.text = "Puntos: " + score;
         }
     }
-
     // Actualiza el texto de las vidas
     public void UpdateHealth(int currentLives)
     {

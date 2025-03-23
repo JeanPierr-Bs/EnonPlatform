@@ -10,7 +10,6 @@ public class PauseMenu : MonoBehaviour
     public GameObject pausePanel, optionPanel; // Panel de pausa
     public Slider musicSlider, sfxSlider;
     private bool isPaused = false;
-
     private void Awake()
     {
         instance = this;
@@ -33,15 +32,6 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None; // Libera el cursor
         Cursor.visible = true;
     }
-    public void OpenOptionPanel()
-    {
-        optionPanel.SetActive(true);
-    }
-
-    public void CloseOptionPanel()
-    {
-        optionPanel.SetActive(false);
-    }
     public void ResumeGame()
     {
         pausePanel.SetActive(false);
@@ -50,6 +40,14 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked; // Bloquea el cursor
         Cursor.visible = false;
     }
+    public void OpenOptionPanel()
+    {
+        optionPanel.SetActive(true);
+    }
+    public void CloseOptionPanel()
+    {
+        optionPanel.SetActive(false);
+    }
     public void QuitGame()
     {
         Time.timeScale = 1f; // Asegura que el tiempo vuelva a la normalidad
@@ -57,10 +55,10 @@ public class PauseMenu : MonoBehaviour
     }
     public void SetMusicLevel()
     {
-        SoundManager.instance.SetMusicLevel();
+        SoundManager.instance.SetMusicLevel(musicSlider.value);
     }
     public void SetSFXLevel()
     {
-        SoundManager.instance.SetSFXLevel();
+        SoundManager.instance.SetSFXLevel(sfxSlider.value);
     }
 }

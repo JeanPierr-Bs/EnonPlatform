@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5814427781207688915
+--- !u!1 &6876544410847733827
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6627943977427164265}
-  - component: {fileID: 7806132863722804172}
-  - component: {fileID: 5453862666082952966}
-  - component: {fileID: 247075247210791778}
+  - component: {fileID: 6063450496288862969}
+  - component: {fileID: 7172668006151601500}
+  - component: {fileID: 4931046615980525974}
+  - component: {fileID: 648628849587799783}
+  - component: {fileID: 8369892110172093670}
   m_Layer: 0
-  m_Name: block-snow-curve-low
+  m_Name: spike-block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6627943977427164265
+--- !u!4 &6063450496288862969
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5814427781207688915}
+  m_GameObject: {fileID: 6876544410847733827}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -12, y: 60, z: 95.3}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.382015, y: -0.049999952, z: 24.292152}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!33 &7806132863722804172
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7172668006151601500
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5814427781207688915}
-  m_Mesh: {fileID: 5361052050597327684, guid: b66131cf8237d004e93b9edf01835519, type: 3}
---- !u!23 &5453862666082952966
+  m_GameObject: {fileID: 6876544410847733827}
+  m_Mesh: {fileID: 2054964407901464956, guid: c2623e62cb74afb47af0c579b15a9d97, type: 3}
+--- !u!23 &4931046615980525974
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5814427781207688915}
+  m_GameObject: {fileID: 6876544410847733827}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6538903991835684241, guid: b66131cf8237d004e93b9edf01835519, type: 3}
+  - {fileID: -6538903991835684241, guid: c2623e62cb74afb47af0c579b15a9d97, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,13 +85,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &247075247210791778
-SphereCollider:
+--- !u!65 &648628849587799783
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5814427781207688915}
+  m_GameObject: {fileID: 6876544410847733827}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -99,9 +100,21 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.03
-  m_Center: {x: 0, y: -0.52, z: 0}
+  m_Size: {x: 0.6785517, y: 0.703717, z: 0.67788506}
+  m_Center: {x: 0.00047659874, y: 0.47821486, z: -0.017507553}
+--- !u!114 &8369892110172093670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6876544410847733827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59baf498e5eba60458abd1612fe3e0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

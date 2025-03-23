@@ -25,7 +25,6 @@ public class ScoreManager : MonoBehaviour
         {
             score += points;
             UiManager.Instance.UpdateScore(score);
-            Debug.Log("Puntos: " + score);
         }
     }
     // Obtiene la puntuación actual
@@ -38,6 +37,5 @@ public class ScoreManager : MonoBehaviour
     {
         score = 0;
         UiManager.Instance.UpdateScore(score);
-        Debug.Log("Puntos reiniciados");
     }
 }

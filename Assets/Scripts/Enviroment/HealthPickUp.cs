@@ -11,7 +11,6 @@ public class HealthPickUp : MonoBehaviour
         if (other.CompareTag("Player")) // Verifica si el jugador lo toca
         {
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-
             if (playerHealth != null)
             {
                 playerHealth.Heal(healAmount); // Cura al jugador

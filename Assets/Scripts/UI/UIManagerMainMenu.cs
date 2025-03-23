@@ -5,9 +5,7 @@ using UnityEngine;
 public class UIManagerMainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject optionsPanel;
-    //[SerializeField] private float transitionTime = 0.5f;
     private CanvasGroup canvasGroup;
-    //private Coroutine transitionCoroutine;
 
     private void Awake()
     {
@@ -16,8 +14,6 @@ public class UIManagerMainMenu : MonoBehaviour
     }
     public void ToggleOptions()
     {
-        //bool opening = !optionsPanel.activeSelf;
-
         bool opening = optionsPanel.activeSelf;
         optionsPanel.SetActive(!opening);
 

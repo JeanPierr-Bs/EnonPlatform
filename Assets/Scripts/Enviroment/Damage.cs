@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnPoint : MonoBehaviour
+public class Damage : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            SpawnManager.lastCheckPointPosition = transform.position;
+            PlayerHealth.Instance.TakeDamage(); // Ajusta según tu sistema de vida
         }
     }
 }
