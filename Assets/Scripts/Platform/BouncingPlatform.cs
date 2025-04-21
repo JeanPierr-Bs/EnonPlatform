@@ -10,7 +10,7 @@ public class BouncingPlatform : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            buttonAnimator.ResetTrigger("Rise"); // Resetea el Trigger (importante)
+            buttonAnimator.ResetTrigger("Rise"); // Resetea el Trigger
             buttonAnimator.SetTrigger("Rise"); // Vuelve a activarlo
 
             // Hacer que el jugador rebote
